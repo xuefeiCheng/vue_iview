@@ -2,13 +2,13 @@
     <div class="layout">
         <app-header v-on:change-side="changeSide"></app-header>
         <Layout :style="{ minHeight: '100vh'}" class="layout">
-                <app-siderbar v-bind:headCollapsed="isCollapsed" v-if="isShowSiderbar" ></app-siderbar>
-                <Layout :style="{padding: '0 10px 10px',width: '1000px'}" ref='layoutPane'>
-                    <Content :style="{flex:'auto', padding: '10px',  minHeight: '200px', background: '#fff', 'overflow': 'auto'}"  >
-                        <router-view></router-view>
-                    </Content>
-                    <app-footer></app-footer>
-                </Layout>
+          <app-siderbar v-bind:headCollapsed="isCollapsed" v-if="isShowSiderbar" ></app-siderbar>
+          <Layout :style="{padding: '0 10px 10px',width: '1000px'}" ref='layoutPane'>
+            <Content :style="{flex:'auto', padding: '10px',  minHeight: '200px', background: '#fff', 'overflow': 'auto'}"  >
+              <router-view></router-view>
+            </Content>
+            <app-footer></app-footer>
+          </Layout>
         </Layout>
     </div>
 </template>
@@ -39,7 +39,7 @@ export default {
   methods: {
     changeSide () {
       this.isCollapsed = !this.isCollapsed
-      // this.$store.commit('SET_SIDE_COLLAPSED', !this.isCollapsed)
+      this.$store.commit('SET_SIDE_COLLAPSED', !this.isCollapsed)
     }
   }
 }

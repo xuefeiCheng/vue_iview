@@ -24,13 +24,13 @@
   </Header>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
       isCollapsed: false,
       MenuText: '综合业务',
       name: '用户',
-      currentPath: '/',
       levelOneMenus: [
         {
           menuId: '01',
@@ -47,6 +47,9 @@ export default {
     // this.menuList()
   },
   computed: {
+    ...mapGetters([
+      'currentPath'
+    ]),
     rotateIcon () {
       return ['menu-icon', this.isCollapsed ? 'rotate-icon' : '']
     }
