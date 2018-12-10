@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store/index' // 引入全局store
 // import NProgress from 'nprogress' // Progress 进度条
 // import 'nprogress/nprogress.css'// Progress 进度条样式
 import LayOut from '@/components/layout/layOut'
@@ -24,6 +23,22 @@ const initialRouteMap = [
         component: helloWorld
       }
     ]
+  },
+  {
+    path: '/menu1',
+    redirect: '/menu1/hello1',
+    name: 'Menu',
+    component: LayOut,
+    children: [
+      {
+        path: 'hello1',
+        name: '首页',
+        meta: {
+          requireAuth: false
+        },
+        component: helloWorld
+      }
+    ]
   }
 ]
 // 简单配置
@@ -35,7 +50,9 @@ const router = new Router({
 
 // 全局路由开始守卫
 router.beforeEach((to, from, next) => {
-  store.commit('SET_CURRENT_PATH', to.fullPath)
+  // store.commit('SET_CURRENT_PATH', to.fullPath)
+  console.log(to.fullPath)
+  sessionStorage.setItem('currentPath', to.fullPath)
   next()
 })
 

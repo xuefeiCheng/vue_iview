@@ -1,7 +1,7 @@
 <template>
     <Sider  hide-trigger collapsible :collapsed-width="78" v-model="headCollapsed" style="height:100%">
       <!-- <Menu :active-name="currentPath.split('/')[2]" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'> -->
-      <Menu :active-name="levelTwoMenus[0].path" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'>
+      <Menu :active-name="currentPath" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'>
         <MenuItem :name="currentSiderMenu.path" v-for="currentSiderMenu in levelTwoMenus" :to="currentSiderMenu.path" :key='currentSiderMenu.menuId'>
           <Icon :type="currentSiderMenu.icon"></Icon>
           <span>{{currentSiderMenu.name}}</span>
@@ -10,7 +10,7 @@
     </Sider>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -20,6 +20,12 @@ export default {
           menuId: '01',
           icon: 'ios-paper',
           name: '测试模块'
+        },
+        {
+          path: '/menu1/hello1',
+          menuId: '011',
+          icon: 'ios-paper',
+          name: '测试模块1'
         }
       ]
     }
@@ -39,9 +45,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'currentPath'
-    ]),
+    // ...mapGetters([
+    //   'currentPath'
+    // ]),
+    currentPath () {
+      console.log(sessionStorage.getItem('currentPath'))
+      return sessionStorage.getItem('currentPath')
+    },
     menuitemClasses: function () {
       return ['menu-item', this.headCollapsed ? 'collapsed-menu' : '']
     }
