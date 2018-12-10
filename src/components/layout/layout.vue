@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <app-header></app-header>
+        <app-header v-on:change-side="changeSide"></app-header>
         <Layout :style="{ minHeight: '100vh'}" class="layout">
                 <app-siderbar v-bind:headCollapsed="isCollapsed" v-if="isShowSiderbar" ></app-siderbar>
                 <Layout :style="{padding: '0 10px 10px',width: '1000px'}" ref='layoutPane'>

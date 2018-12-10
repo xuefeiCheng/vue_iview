@@ -54,7 +54,7 @@ export default {
   methods: {
     changeStateCollapsed () {
       this.isCollapsed = !this.isCollapsed
-      // this.$emit('change-side')
+      this.$emit('change-side')
     },
     handleClick (name) {
       switch (name) {
