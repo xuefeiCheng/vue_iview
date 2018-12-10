@@ -16,23 +16,15 @@ const initialRouteMap = [
     children: [
       {
         path: 'hello',
-        name: '首页',
+        name: '测试页1',
         meta: {
           requireAuth: false
         },
         component: helloWorld
-      }
-    ]
-  },
-  {
-    path: '/menu1',
-    redirect: '/menu1/hello1',
-    name: 'Menu',
-    component: LayOut,
-    children: [
+      },
       {
         path: 'hello1',
-        name: '首页',
+        name: '测试页2',
         meta: {
           requireAuth: false
         },

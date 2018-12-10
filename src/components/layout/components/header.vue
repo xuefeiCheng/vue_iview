@@ -1,7 +1,7 @@
 <template>
   <Header class="base-header">
     <!-- <Menu mode="horizontal" theme="dark" width="auto" :active-name="currentPath.split('/')[1]" ref="menuHead"> -->
-    <Menu mode="horizontal" theme="dark" width="auto" :active-name="levelOneMenus[0].menuId" ref="menuHead">
+    <Menu mode="horizontal" theme="dark" width="auto" :active-name="currentPath" ref="menuHead">
       <div class="layout-logo"><img src="static/imgs/logo.png" alt="Paris" width="51" height="51">
       <span class="header-logoText">综合业务管理子系统</span> </div>
       <Icon @click="changeStateCollapsed" :class="rotateIcon" type="md-menu" size="24"></Icon>
@@ -25,7 +25,7 @@
   </Header>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -34,8 +34,8 @@ export default {
       name: '用户',
       levelOneMenus: [
         {
-          menuId: '01',
-          url: '/',
+          menuId: 'menu',
+          url: '/menu',
           name: '测试模块'
         }
       ]
@@ -48,9 +48,13 @@ export default {
     // this.menuList()
   },
   computed: {
-    ...mapGetters([
-      'currentPath'
-    ]),
+    // ...mapGetters([
+    //   'currentPath'
+    // ]),
+    currentPath () {
+      console.log(sessionStorage.getItem('currentPath').split('/')[1])
+      return sessionStorage.getItem('currentPath').split('/')[1]
+    },
     rotateIcon () {
       return ['menu-icon', this.isCollapsed ? 'rotate-icon' : '']
     }

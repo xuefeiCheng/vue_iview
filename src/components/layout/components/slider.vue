@@ -22,7 +22,7 @@ export default {
           name: '测试模块'
         },
         {
-          path: '/menu1/hello1',
+          path: '/menu/hello1',
           menuId: '011',
           icon: 'ios-paper',
           name: '测试模块1'
