@@ -1,6 +1,7 @@
 <template>
   <Header class="base-header">
-    <Menu mode="horizontal" theme="dark" width="auto" :active-name="currentPath.split('/')[1]" ref="menuHead">
+    <!-- <Menu mode="horizontal" theme="dark" width="auto" :active-name="currentPath.split('/')[1]" ref="menuHead"> -->
+    <Menu mode="horizontal" theme="dark" width="auto" :active-name="levelOneMenus[0].menuId" ref="menuHead">
       <div class="layout-logo"><img src="static/imgs/logo.png" alt="Paris" width="51" height="51">
       <span class="header-logoText">综合业务管理子系统</span> </div>
       <Icon @click="changeStateCollapsed" :class="rotateIcon" type="md-menu" size="24"></Icon>

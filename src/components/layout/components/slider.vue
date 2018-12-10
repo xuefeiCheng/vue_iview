@@ -1,6 +1,7 @@
 <template>
     <Sider  hide-trigger collapsible :collapsed-width="78" v-model="headCollapsed" style="height:100%">
-      <Menu :active-name="currentPath.split('/')[2]" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'>
+      <!-- <Menu :active-name="currentPath.split('/')[2]" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'> -->
+      <Menu :active-name="levelTwoMenus[0].path" theme="light" width="auto" :class="menuitemClasses" ref='menuSide'>
         <MenuItem :name="currentSiderMenu.path" v-for="currentSiderMenu in levelTwoMenus" :to="currentSiderMenu.path" :key='currentSiderMenu.menuId'>
           <Icon :type="currentSiderMenu.icon"></Icon>
           <span>{{currentSiderMenu.name}}</span>
