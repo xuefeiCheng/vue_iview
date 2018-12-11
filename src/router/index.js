@@ -19,6 +19,17 @@ export const asyncRouterMap = [
     children: [
       { path: 'userManage', name: '用户管理', icon: 'ios-paper', component: helloWorld, menuId: 'userManage' }
     ]
+  },
+  {
+    path: '/numManage',
+    redirect: '/numManage/classifyQuery',
+    name: '号码管理',
+    menuId: 'numManage',
+    component: LayOut,
+    children: [
+      { path: 'classifyQuery', name: '分类查询', icon: 'ios-paper', component: () => import('@/pages/numManage/classifyQuery'), menuId: 'classifyQuery' },
+      { path: 'TorLQuery', name: '提醒/拦截号码', icon: 'ios-paper', component: () => import('@/pages/numManage/TorLQuery'), menuId: 'TorLQuery' }
+    ]
   }
 ]
 
