@@ -25,10 +25,12 @@ export default {
   },
   created () {
   },
+  mounted () {
+    console.log(this.$store)
+  },
   computed: {
     isShowSiderbar: function () {
-      return true
-      // return this.$store.getters.levelTwoMenus.length !== 0
+      return this.$store.getters.levelTwoMenus.length !== 0
     }
   },
   components: {
@@ -39,7 +41,6 @@ export default {
   methods: {
     changeSide () {
       this.isCollapsed = !this.isCollapsed
-      this.$store.commit('SET_SIDE_COLLAPSED', !this.isCollapsed)
     }
   }
 }

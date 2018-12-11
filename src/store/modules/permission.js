@@ -2,20 +2,21 @@ import { asyncRouterMap } from '@/router/index'
 
 // 筛选前端可以显示的路由
 function filterRouterMap (routerMap, menuIds) {
-  let addRouterMap = routerMap.filter(element => {
-    return menuIds.some(menuId => {
-      if (menuId === element.menuId) {
-        if (element.children && element.children.length > 0) {
-          element.children = filterRouterMap(element.children, menuIds)
-        }
-        return true
-      } else {
-        return false
-      }
-    })
-  })
+  // console.log(menuIds)
+  // let addRouterMap = routerMap.filter(element => {
+  //   return menuIds.some(menuId => {
+  //     if (menuId === element.menuId) {
+  //       if (element.children && element.children.length > 0) {
+  //         element.children = filterRouterMap(element.children, menuIds)
+  //       }
+  //       return true
+  //     } else {
+  //       return false
+  //     }
+  //   })
+  // })
 
-  return addRouterMap
+  return routerMap
 }
 
 // 添加的路由的重定向路径添加
@@ -24,7 +25,7 @@ function filterRouterMapRedirect (addRouterMap) {
     addRouterMap.push({
       path: '/noAuth',
       menuId: 'noAuth',
-      component: () => import('@/components/container/MainOne'),
+      component: () => import('@/components/layout/layout'),
       children: [
         {path: '', component: () => import('@/pages/NoAuth'), menuId: 'noAuth'}
       ]
@@ -68,11 +69,11 @@ const permission = {
   actions: {
     generateAddRouterMapAndMenu ({commit}, menus) {
       let levelOneMenus = []
-      let menuIds = []
-      menus.forEach(element => {
-        menuIds.push(element.menuId)
-      })
-      let addRouterMap = filterRouterMapRedirect(filterRouterMap(asyncRouterMap, menuIds))
+      // let menuIds = []
+      // menus.forEach(element => {
+      //   menuIds.push(element.menuId)
+      // })
+      let addRouterMap = filterRouterMapRedirect(filterRouterMap(asyncRouterMap, asyncRouterMap))
       commit('SET_ADD_ROUTER_MAP', addRouterMap)
       addRouterMap.forEach(element => {
         let levelOneMenu = {}
